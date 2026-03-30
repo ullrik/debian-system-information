@@ -1,5 +1,6 @@
 # Récupération System Information
 Script .sh pour récupérer des informations du système Debian qui produit une sortie json.
+La logique voudrait que le script soit dans /usr/local/bin/ et un résultat dans /var/lib/info-system/xxx.json. Dans mon cas, j'ai fait plus simple avec /home/<user>/scripts/
 
 ## Exécution du programme
 /!\ Il faut des privilèges pour exécuter le script :
@@ -167,6 +168,7 @@ Ensuite dans Home Assistant, en deux étapes :
 
 ## Affichage dans Home Assistant
 Voici un exemple d'affichage : 
+![icons image](/docs/media/Apercu_HA_systeme-info.png)
 
 le code : 
 ```
