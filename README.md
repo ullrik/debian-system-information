@@ -230,14 +230,26 @@ entities:
 ```
 
 # Mise à jour du système
+
 Se mettre en admin :
 ```
 su -
 ```
-Faire les mise à jour 
+## Faire les mise à jour Linux
 ```
 sudo apt update
 sudo apt full-upgrade -y
 sudo apt autoremove --purge -y
 sudo apt autoclean
+```
+## Mise à jour du firmware Raspberry 
+```
+sudo rpi-eeprom-update
+# pour controler si default
+cat /etc/default/rpi-eeprom-update
+```
+Si disponible
+```
+sudo rpi-eeprom-update -a
+reboot
 ```
