@@ -253,7 +253,7 @@ Si disponible
 sudo rpi-eeprom-update -a
 reboot
 ```
-## Mettre à jour Zigbee2MQTT
+## Mettre à jour Zigbee2MQTT (systemctl)
 ### Sauvegarder / backup
 ```
 cd /opt
@@ -265,6 +265,15 @@ sudo tar -czvf "zigbee2mqtt_$(date +"%Y%m%d").tar.gz" zigbee2mqtt
 ```
 cd /opt/zigbee2mqtt
 ./update.sh
+# controler si cela reboot bien
+sudo journalctl -u zigbee2mqtt.service -f
 ```
+/!\ ne pas forcement mettre à jour vers la derniere version pnpm
 
-
+## Mettre à jour Home Assistant (docker)
+```
+cd
+cd docker
+docker compose pull
+docker compose up -d
+```
