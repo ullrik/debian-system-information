@@ -228,3 +228,13 @@ entities:
         attribute: upgradable_count
         name: Nombre de mise à jour
 ```
+
+# Mise à jour du système
+Se mettre en admin :
+```
+su -
+```
+Faire les mise à jour 
+```
+sudo apt update && sudo apt upgrade -y
+```
