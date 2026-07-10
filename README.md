@@ -236,5 +236,8 @@ su -
 ```
 Faire les mise à jour 
 ```
-sudo apt update && sudo apt upgrade -y
+sudo apt update
+sudo apt full-upgrade -y
+sudo apt autoremove --purge -y
+sudo apt autoclean
 ```
