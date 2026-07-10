@@ -253,3 +253,10 @@ Si disponible
 sudo rpi-eeprom-update -a
 reboot
 ```
+## Mettre à jour Zigbee2MQTT
+### Sauvegarder / backup
+```
+#stop zigbee2mqtt
+sudo systemctl stop zigbee2mqtt
+sudo tar -czvf "zigbee2mqtt_$(date +"%Y%m%d").tar.gz" zigbee2mqtt
+```
