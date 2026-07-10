@@ -256,7 +256,15 @@ reboot
 ## Mettre à jour Zigbee2MQTT
 ### Sauvegarder / backup
 ```
+cd /opt
 #stop zigbee2mqtt
 sudo systemctl stop zigbee2mqtt
 sudo tar -czvf "zigbee2mqtt_$(date +"%Y%m%d").tar.gz" zigbee2mqtt
 ```
+### Mise à jour
+```
+cd /opt/zigbee2mqtt
+./update.sh
+```
+
+
