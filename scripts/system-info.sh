@@ -55,11 +55,16 @@ if [ -n "${RELEASE_DATA}" ]; then
   DEBIAN_LATEST_CODENAME="${DEBIAN_LATEST_CODENAME:-unknown}"
 fi
 
+#IS_LATEST_DEBIAN=false
+#if [ "${VERSION_CODENAME}" == "${DEBIAN_LATEST_CODENAME}" ]; then
+#  IS_LATEST_DEBIAN=true
+#fi
+#IS_LATEST_DEBIAN_VERSION
 IS_LATEST_DEBIAN=false
-if [ "${VERSION_CODENAME}" = "${DEBIAN_LATEST_CODENAME}" ]; then
+if [ "${DEBIAN_VERSION_FULL}" == "${DEBIAN_LATEST_VERSION}" ]; then
   IS_LATEST_DEBIAN=true
 fi
- 
+
 # --- APT update status ---
 APT_UPDATE_OK=true
 UPGRADABLE_COUNT=0
@@ -108,6 +113,21 @@ if command -v rpi-eeprom-update >/dev/null 2>&1; then
     fi
   fi
 fi
+
+# --- Zigbee2MQTT installed version ---
+Z2M_INSTALLED_VERSION="unknown"
+
+if [ -r /opt/zigbee2mqtt/package.json ]; then
+  Z2M_INSTALLED_VERSION="$(grep '"version"' /opt/zigbee2mqtt/package.json | head -1 | awk -F'"' '{print $4}')"
+fi
+
+# --- Zigbee2MQTT latest version (npm registry) ---
+Z2M_LATEST_VERSION="unknown"
+  
+Z2M_LATEST_VERSION="$(curl -fs https://registry.npmjs.org/zigbee2mqtt/latest 2>/dev/null \
+  | sed -n 's/.*"version":"\([^"]*\)".*/\1/p')"
+
+Z2M_LATEST_VERSION="${Z2M_LATEST_VERSION:-unknown}"
  
 NOW_ISO="$(date -Is)"
  
@@ -121,6 +141,8 @@ DEBIAN_LATEST_VERSION_ESC="$(json_escape "${DEBIAN_LATEST_VERSION}")"
 DEBIAN_LATEST_CODENAME_ESC="$(json_escape "${DEBIAN_LATEST_CODENAME}")"
 EEPROM_CURRENT_ESC="$(json_escape "${EEPROM_CURRENT}")"
 EEPROM_LATEST_ESC="$(json_escape "${EEPROM_LATEST}")"
+Z2M_INSTALLED_VERSION_ESC="$(json_escape "${Z2M_INSTALLED_VERSION}")"
+Z2M_LATEST_VERSION_ESC="$(json_escape "${Z2M_LATEST_VERSION}")"
  
 # --- Écriture JSON (atomique) ---
 cat > "${TMP_FILE}" <<JSON
@@ -148,6 +170,12 @@ cat > "${TMP_FILE}" <<JSON
     "current": "${EEPROM_CURRENT_ESC}",
     "latest": "${EEPROM_LATEST_ESC}",
     "up_to_date": ${EEPROM_UP_TO_DATE}
+  },
+  "services": {
+    "zigbee2mqtt": {
+      "installed_version": "${Z2M_INSTALLED_VERSION_ESC}",
+      "latest_version": "${Z2M_LATEST_VERSION_ESC}"
+    }
   }
 }
 JSON
