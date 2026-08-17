@@ -265,6 +265,7 @@ sudo tar -czvf "zigbee2mqtt_$(date +"%Y%m%d").tar.gz" zigbee2mqtt
 ```
 cd /opt/zigbee2mqtt
 ./update.sh
+# Attention : avant de mettre à jour pnpm, controler ce qui est attendu en version max dans package.json > "packageManager": "pnpm@xx.xx.x",
 # controler si cela reboot bien
 sudo journalctl -u zigbee2mqtt.service -f
 ```
