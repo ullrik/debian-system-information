@@ -271,10 +271,19 @@ sudo journalctl -u zigbee2mqtt.service -f
 /!\ ne pas forcement mettre à jour vers la dernière version pnpm. 
     avant de mettre à jour pnpm, controler ce qui est attendu en version max dans package.json > "packageManager": "pnpm@xx.xx.x",
 
-## Mettre à jour Home Assistant (docker)
+## Mettre à jour docker
+Au niveau du docker-compose.yml
 ```
 cd
 cd docker
 docker compose pull
 docker compose up -d
 ```
+ou pour mettre à jour un docker spécifique, ex : homeassistant :
+```
+cd
+cd docker
+docker compose pull
+docker compose up -d homeassistant
+```
+A revalider ce code
