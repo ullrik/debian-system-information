@@ -243,6 +243,7 @@ sudo apt autoremove --purge -y
 sudo apt autoclean
 ```
 ## Mise à jour du firmware Raspberry 
+A partir du Raspberry pi 4
 ```
 sudo rpi-eeprom-update
 # pour controler si default
