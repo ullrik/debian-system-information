@@ -48,8 +48,8 @@ DEBIAN_LATEST_CODENAME="unknown"
 RELEASE_DATA="$(curl -fs https://deb.debian.org/debian/dists/stable/Release 2>/dev/null || true)"
 
 if [ -n "${RELEASE_DATA}" ]; then
-  DEBIAN_LATEST_VERSION="$(awk -F': ' '/^Version:/ {print $2; exit}' <<< "${RELEASE_DATA}")"
-  DEBIAN_LATEST_CODENAME="$(awk -F': ' '/^Codename:/ {print $2; exit}' <<< "${RELEASE_DATA}")"
+  DEBIAN_LATEST_VERSION="$(awk -F': ' '/^Version:/ {print $2; exit}' <<< "${RELEASE_DATA}")" || DEBIAN_LATEST_VERSION="unknown"
+  DEBIAN_LATEST_CODENAME="$(awk -F': ' '/^Codename:/ {print $2; exit}' <<< "${RELEASE_DATA}")" || DEBIAN_LATEST_CODENAME="unknown"
   #DEBIAN_LATEST_VERSION="$(echo "${RELEASE_DATA}" | awk -F': ' '/^Version:/ {print $2; exit}')"
   #DEBIAN_LATEST_CODENAME="$(echo "${RELEASE_DATA}" | awk -F': ' '/^Codename:/ {print $2; exit}')"
 
@@ -96,8 +96,8 @@ if command -v rpi-eeprom-update >/dev/null 2>&1; then
   EEPROM_OUT="$(rpi-eeprom-update 2>/dev/null || true)"
  
   # Parsing tolérant (sorties variables selon versions)
-  EEPROM_CURRENT="$(awk -F': ' '/CURRENT:/{print $2; exit}' <<< "${EEPROM_OUT}")"
-  EEPROM_LATEST="$(awk -F': ' '/LATEST:/{print $2; exit}' <<< "${EEPROM_OUT}")"
+  EEPROM_CURRENT="$(awk -F': ' '/CURRENT:/{print $2; exit}' <<< "${EEPROM_OUT}")" || EEPROM_CURRENT="unknown"
+  EEPROM_LATEST="$(awk -F': ' '/LATEST:/{print $2; exit}' <<< "${EEPROM_OUT}")" || EEPROM_LATEST="unknown"
   #EEPROM_CURRENT="$(echo "${EEPROM_OUT}" | awk -F': ' '/CURRENT:/{print $2; exit}' || true)"
   #EEPROM_LATEST="$(echo "${EEPROM_OUT}" | awk -F': ' '/LATEST:/{print $2; exit}' || true)"
  
