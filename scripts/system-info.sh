@@ -73,6 +73,7 @@ UPGRADABLE_COUNT=0
 
 #if ! apt-get update -qq >/dev/null 2>&1; then
 if ! timeout 300 apt-get update -qq >/dev/null 2>&1; then
+  # timeout = 5 min
   APT_UPDATE_OK=false
 fi
  
