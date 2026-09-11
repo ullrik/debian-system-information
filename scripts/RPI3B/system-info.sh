@@ -67,6 +67,14 @@ if [ "${DEBIAN_VERSION_FULL}" == "${DEBIAN_LATEST_VERSION}" ]; then
   IS_LATEST_DEBIAN=true
 fi
 
+# --- Debian branch latest stable (via repository metadata) ---
+if [ -n "${VERSION_CODENAME:-}" ]; then
+  DEBIAN_RELEASE_URL="https://www.debian.org/releases/${VERSION_CODENAME}/"
+  DEBIAN_BRANCH_LATEST_VERSION="unknown"
+  
+  RELEASE_DATA="$(curl -fs ${DEBIAN_RELEASE_URL} 2>/dev/null || true)"
+fi
+
 # --- APT update status ---
 APT_UPDATE_OK=true
 UPGRADABLE_COUNT=0
