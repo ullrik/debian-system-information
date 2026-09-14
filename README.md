@@ -284,7 +284,7 @@ ou pour mettre à jour un docker spécifique, ex : homeassistant :
 ```
 cd
 cd docker
-docker compose pull
+docker compose pull wud
 docker compose up -d homeassistant
 ```
 A revalider ce code
