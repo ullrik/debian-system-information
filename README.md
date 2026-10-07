@@ -7,7 +7,7 @@ La logique voudrait que le script soit dans /usr/local/bin/ et un résultat dans
 ```
 bash system-info.sh
 ```
-Exemple de fichier généré sur un Rasbperru PI Os Lite : 
+Exemple de fichier généré sur un Raspberry PI Os Lite : 
 ```
 {
   "timestamp": "2026-03-30T06:00:06+02:00",
