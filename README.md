@@ -297,6 +297,12 @@ Contrôler si en delta par rapport à git :
 ```
 git status --short
 ```
+
+Remettre tout les dossiers et fichiers sur le bon user : 
+```
+sudo chown -R pi:pi /opt/zigbee2mqtt
+```
+
 </details>
 
 ## Mettre à jour docker
