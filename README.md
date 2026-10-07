@@ -274,11 +274,28 @@ sudo journalctl -u zigbee2mqtt.service -f
 
 <details>
 <summary>Commandes utiles</summary>
+
+  
 Controler les versions : 
 ```
 node --version
 npm --version
 pnpm --version
+```
+
+Mettre à jour pnpm :
+```
+corepack use pnpm@xx.yy.zz
+```
+
+Contrôler la version actuelle :
+```
+git describe --tags --always
+```
+
+Contrôler si en delta par rapport à git :
+```
+git status --short
 ```
 </details>
 
