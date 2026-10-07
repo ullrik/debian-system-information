@@ -272,6 +272,16 @@ sudo journalctl -u zigbee2mqtt.service -f
 /!\ ne pas forcement mettre à jour vers la dernière version pnpm. 
     avant de mettre à jour pnpm, controler ce qui est attendu en version max dans package.json > "packageManager": "pnpm@xx.xx.x",
 
+<details>
+<summary>Commandes utiles</summary>
+Controler les versions : 
+```
+node --version
+npm --version
+pnpm --version
+```
+</details>
+
 ## Mettre à jour docker
 Au niveau du docker-compose.yml
 ```
